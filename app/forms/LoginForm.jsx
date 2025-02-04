@@ -3,7 +3,9 @@ import { View, Text, Button, StyleSheet, TextInput, TouchableOpacity } from 'rea
 import { LinearGradient } from 'expo-linear-gradient';
 
 function LoginForm() {
-   
+    
+   const [email, setEmail] = useState('');
+   const [password, setPassword] = useState('');
 
     return (
         

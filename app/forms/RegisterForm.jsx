@@ -10,7 +10,7 @@ function RegisterForm() {
     const handleRegister = async () => {
         try {
             console.log('Sending registration request...');
-            const response = await axios.post('http://localhost:5000/api/auth/register', {
+            const response = await axios.post('http://192.168.8.79:5000/api/auth/register', {
                 email,
                 name,
                 password,
@@ -18,27 +18,11 @@ function RegisterForm() {
 
             console.log('Response received:', response);
 
-            if (response.status === 200) {
-                Alert.alert('Registered successfully');
-            } else {
-                console.log('Error response status:', response.status);
-                console.log('Error response data:', response.data);
-                Alert.alert('Error in registration', response.data.message || 'An error occurred');
-            }
+            if ( response.status === 200 ) {
+                Alert.alert(" message", response.data.message);
+            } 
         } catch (error) {
             console.error('Registration error:', error);
-            if (error.response) {
-                console.error('Error response data:', error.response.data);
-                console.error('Error response status:', error.response.status);
-                console.error('Error response headers:', error.response.headers);
-                Alert.alert('Error in registration', error.response.data.message || 'An error occurred');
-            } else if (error.request) {
-                console.error('Error request:', error.request);
-                Alert.alert('Error in registration', 'No response from server');
-            } else {
-                console.error('Error message:', error.message);
-                Alert.alert('Error in registration', error.message);
-            }
         }
     };
 
@@ -74,6 +58,7 @@ function RegisterForm() {
 
 const styles = StyleSheet.create({
     container: {
+        width: '100%',
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
