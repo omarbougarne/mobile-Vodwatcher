@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
 import axios from 'axios';
-
+import axiosInstance from "../(services)/api/Client";
+// const appUrl = process.env.APP_URL
 function RegisterForm() {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
@@ -10,7 +11,7 @@ function RegisterForm() {
     const handleRegister = async () => {
         try {
             console.log('Sending registration request...');
-            const response = await axios.post('http://192.168.8.79:5000/api/auth/register', {
+            const response = await axiosInstance.post('auth/register', {
                 email,
                 name,
                 password,
